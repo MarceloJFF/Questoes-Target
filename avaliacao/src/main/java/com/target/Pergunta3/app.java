@@ -50,12 +50,25 @@ public class app {
                 }
             }
             mediaFaturamento = somaFaturamento/(faturamentos.size() - diasParaIgnorar);
+            System.out.println("Menor faturamento "+menorFaturamento);
+            System.out.println("Maior Faturamento "+ maiorFaturamento);
             System.out.println("O valor das médias dos faturamentos é "+ mediaFaturamento );
-            
+            System.out.println("Numero de dias que o faturamento foi maior que a media mensal: "+ calcularNumDiasFaturamentoMenorMedia(mediaFaturamento, faturamentos));
             
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
+    }
+    public static Integer calcularNumDiasFaturamentoMenorMedia(Double media, List<Faturamento> faturamentos){
+        Integer cont = 0;
+        for (Faturamento faturamento : faturamentos) {
+            if(faturamento.getValor()>media){
+                cont++;
+            }
+        }
+
+        return cont;
 
     }
 }
